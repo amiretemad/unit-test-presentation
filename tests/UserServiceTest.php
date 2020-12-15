@@ -29,7 +29,7 @@ class UserServiceTest extends TestCase
         $this->userService = new UserService($this->userRepository);
     }
 
-    public function testGetAllUsersTest()
+    public function testGetAllUsers()
     {
 
         $this->userRepository
@@ -42,7 +42,7 @@ class UserServiceTest extends TestCase
 
     }
 
-    public function testGetActiveUsersTest()
+    public function testGetActiveUsers()
     {
         $this->userRepository
             ->method('getUsers')
