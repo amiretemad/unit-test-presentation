@@ -6,7 +6,9 @@
             "email": "amiretemaddevelopment@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "fzaninotto/faker": "^1.9"
+    },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
     },

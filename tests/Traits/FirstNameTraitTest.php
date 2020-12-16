@@ -4,15 +4,13 @@
 namespace App\Tests\Traits;
 
 
+use App\Tests\TestCase;
 use App\Traits\FirstNameTrait;
-use PHPUnit\Framework\TestCase;
 
 class FirstNameTraitTest extends TestCase
 {
 
-    /**
-     * @var FirstNameTrait
-     */
+    /**@var FirstNameTrait */
     private $trait;
 
     public function setUp(): void
@@ -28,7 +26,7 @@ class FirstNameTraitTest extends TestCase
 
     public function testGetMethodIsString()
     {
-        $this->trait->setFirstname('Amir');
+        $this->trait->setFirstname($this->faker->name);
 
         self::assertIsString($this->trait->getFirstname());
     }
@@ -36,7 +34,7 @@ class FirstNameTraitTest extends TestCase
     public function testSetMethodException () {
         $this->expectExceptionMessage('Firstname must be string');
 
-        $this->trait->setFirstname('123123');
+        $this->trait->setFirstname($this->faker->randomDigit);
     }
 
 }

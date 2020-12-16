@@ -7,38 +7,48 @@ namespace App\Tests;
 use App\Repository\UserRepository;
 use App\Schema\UserSchema;
 use App\UserService;
-use PHPUnit\Framework\TestCase;
+use Exception;
+use phpDocumentor\Reflection\Types\Parent_;
 
+/**
+ * Class UserServiceTest
+ * @package App\Tests
+ * @coversDefaultClass \App\UserService
+ */
 class UserServiceTest extends TestCase
 {
 
-    /**
-     * @var UserRepository
-     */
+    /** @var UserRepository */
     private $userRepository;
-
-    /**
-     * @var UserService
-     */
+    /**@var UserService */
     private $userService;
 
     public function setUp(): void
     {
+        parent::setUp();
         $this->userRepository = $this->createMock(UserRepository::class);
 
         $this->userService = new UserService($this->userRepository);
     }
 
+    /**
+     * @throws Exception
+     * @covers ::getAllUsers
+     */
     public function testGetAllUsers()
     {
+        $users =[
+            (new UserSchema())->setFirstname($this->faker->name)->setLastname($this->faker->lastName),
+            (new UserSchema())->setFirstname($this->faker->name)->setLastname($this->faker->lastName)
+        ];
 
         $this->userRepository
             ->method('getUsers')
-            ->willReturn([
-                (new UserSchema())->setFirstname('Amir')->setLastname('Etemad'),
-            ]);
+            ->willReturn($users);
 
-        self::assertCount(1, $this->userService->getAllUsers());
+        $expected = $this->userService->getAllUsers();
+
+        $this->assertEquals($users, $expected);
 
     }
 

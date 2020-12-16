@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Order;
 
 use App\Order;
@@ -12,7 +11,6 @@ class OrderTest extends TestCase
 
     public function testNonExistingPaymentGateway()
     {
-
         $mockedPaymentGateway = $this->getMockBuilder(PaymentGatewayInterface::class)
             ->setMethods(['charge'])
             ->getMock();
