@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Tests;
+namespace App\Tests\Traits;
 
 
 use Faker\Factory;

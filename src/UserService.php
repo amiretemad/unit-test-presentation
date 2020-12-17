@@ -37,12 +37,8 @@ class UserService
      */
     public function getActiveUsers(): array
     {
-        return array_filter($this->userRepository->getUsers(), function (UserSchema $userSchema) {
-            if ($userSchema->getStatus() === 1) {
-                return true;
-            }
-
-            return false;
+        return array_filter($this->userRepository->getUsers(), static function (UserSchema $userSchema) {
+            return $userSchema->getStatus() === 1;
         });
     }
 

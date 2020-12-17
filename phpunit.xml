@@ -9,12 +9,17 @@
          convertWarningsToExceptions = "true"
          processIsolation            = "false"
          stopOnFailure               = "false"
-         syntaxCheck                 = "false">
+         >
 
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>tests</directory>
+        <testsuite name="unitTests">
+            <directory>tests/UnitTests</directory>
         </testsuite>
+
+        <testsuite name="IntegrationTests">
+            <directory>tests/IntegrationTests</directory>
+        </testsuite>
+
     </testsuites>
 
     <filter>

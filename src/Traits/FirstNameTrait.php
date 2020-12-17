@@ -4,6 +4,8 @@
 namespace App\Traits;
 
 
+use RuntimeException;
+
 trait FirstNameTrait
 {
 
@@ -28,7 +30,7 @@ trait FirstNameTrait
     public function setFirstname(string $firstname): self
     {
         if (is_numeric($firstname)) {
-            throw new \Exception('Firstname must be string');
+            throw new RuntimeException('Firstname must be string');
         }
 
         $this->firstname = $firstname;

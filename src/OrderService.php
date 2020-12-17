@@ -6,13 +6,18 @@ namespace App;
 
 use App\Payment\PaymentGatewayInterface;
 
-class Order
+class OrderService
 {
 
     /**
      * @var int
      */
     public $amount = 0;
+
+    /**
+     * @var int
+     */
+    public $discount = 0;
 
     /**
      * @var PaymentGatewayInterface
@@ -33,6 +38,9 @@ class Order
      */
     public function process(): bool
     {
+
+        $this->amount -= $this->discount;
+
         return $this->paymentGateway->charge($this->amount);
     }
 
